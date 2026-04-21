@@ -1,0 +1,347 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --sk-brand-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Baskerville", "Times New Roman", serif;
+    --sk-brand-sans: "Avenir Next", "SF Pro Display", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Inter, "Helvetica Neue", Arial, sans-serif;
+    --sk-ink: #3e3b40;
+    --sk-ink-soft: #67636a;
+    --sk-deep: #29272d;
+    --sk-deep-2: #34323a;
+    --sk-red: #ea0016;
+    --sk-orange: #f68a00;
+    --sk-yellow: #ffd400;
+    --sk-green: #38b533;
+    --sk-blue: #1a97da;
+    --sk-gray: #5e5a60;
+    --sk-action: #1a97da;
+    --sk-action-strong: #0f78cf;
+    --sk-paper: #f7f7f5;
+    --sk-paper-2: #f2f3f5;
+    --sk-paper-3: #eceef2;
+    --sk-sand: #e5e7eb;
+    /* Star Kitchen Design System - Navy Blue */
+    --background: 221 62% 12%;      /* #0b1b43 海军蓝 */
+    --foreground: 210 40% 98%;
+    --card: 219 53% 16%;            /* #132b5b 深海蓝卡片 */
+    --card-foreground: 210 40% 98%;
+    --popover: 219 53% 16%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 221 89% 73%;         /* #7ea7ff 亮蓝强调 */
+    --primary-foreground: 222 63% 13%;
+    --secondary: 219 46% 22%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 219 41% 19%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 221 89% 73%;
+    --accent-foreground: 222 63% 13%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 33% 30%;
+    --input: 219 45% 17%;
+    --ring: 221 89% 73%;
+    --radius: 0.75rem;
+  }
+
+  html[data-theme-resolved='light'] {
+    --background: 216 45% 97%;
+    --foreground: 222 47% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 12%;
+    --primary: 220 78% 52%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 214 32% 92%;
+    --secondary-foreground: 222 47% 17%;
+    --muted: 214 28% 92%;
+    --muted-foreground: 217 16% 42%;
+    --accent: 214 42% 90%;
+    --accent-foreground: 222 47% 15%;
+    --destructive: 0 72% 47%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 216 28% 84%;
+    --input: 216 28% 90%;
+    --ring: 220 78% 52%;
+  }
+
+  html[data-theme-resolved='dark'] {
+    color-scheme: dark;
+  }
+
+  html[data-theme-resolved='light'] {
+    color-scheme: light;
+  }
+
+  /* Light mode readability guard:
+   * legacy dark-theme classes often use low-opacity white text (text-white/xx),
+   * which becomes unreadable on bright surfaces. */
+  html[data-theme-resolved='light'] .text-white\/80,
+  html[data-theme-resolved='light'] .text-white\/70,
+  html[data-theme-resolved='light'] .text-white\/65,
+  html[data-theme-resolved='light'] .text-white\/60,
+  html[data-theme-resolved='light'] .text-white\/50,
+  html[data-theme-resolved='light'] .text-white\/45,
+  html[data-theme-resolved='light'] .text-white\/40,
+  html[data-theme-resolved='light'] .text-white\/35,
+  html[data-theme-resolved='light'] .text-white\/30,
+  html[data-theme-resolved='light'] .text-white\/25,
+  html[data-theme-resolved='light'] .text-white\/20 {
+    color: rgb(51 65 85) !important;
+  }
+
+  html[data-theme-resolved='light'] .text-red-100,
+  html[data-theme-resolved='light'] .text-red-200 {
+    color: rgb(153 27 27) !important;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.sk-corporate-shell {
+  position: relative;
+  isolation: isolate;
+  font-family: var(--sk-brand-sans);
+  background:
+    radial-gradient(circle at 8% 10%, rgba(234, 0, 22, 0.12), transparent 18%),
+    radial-gradient(circle at 88% 10%, rgba(246, 138, 0, 0.14), transparent 17%),
+    radial-gradient(circle at 88% 38%, rgba(255, 212, 0, 0.12), transparent 16%),
+    radial-gradient(circle at 62% 78%, rgba(56, 181, 51, 0.12), transparent 20%),
+    radial-gradient(circle at 18% 76%, rgba(26, 151, 218, 0.11), transparent 20%),
+    radial-gradient(circle at 16% 38%, rgba(246, 138, 0, 0.08), transparent 18%),
+    linear-gradient(180deg, #fbfbfa 0%, #f3f5f8 48%, #edf1f6 100%);
+  color: var(--sk-ink);
+}
+
+.sk-corporate-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(23, 28, 25, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 28, 25, 0.045) 1px, transparent 1px);
+  background-size: 120px 120px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 34%, transparent 68%, rgba(0, 0, 0, 0.12));
+  opacity: 0.5;
+}
+
+.sk-corporate-shell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.7), transparent 18%),
+    radial-gradient(circle at 78% 22%, rgba(26, 151, 218, 0.08), transparent 16%),
+    radial-gradient(circle at 22% 72%, rgba(56, 181, 51, 0.07), transparent 16%),
+    radial-gradient(circle at 54% 14%, rgba(246, 138, 0, 0.06), transparent 15%);
+  mix-blend-mode: screen;
+  opacity: 0.7;
+}
+
+.sk-corp-panel {
+  border: 1px solid rgba(62, 59, 64, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(247, 248, 250, 0.98) 100%);
+  box-shadow: 0 28px 80px rgba(30, 32, 37, 0.08);
+  backdrop-filter: blur(14px);
+}
+
+.sk-corp-panel-soft {
+  border: 1px solid rgba(62, 59, 64, 0.08);
+  background:
+    radial-gradient(circle at top right, rgba(26, 151, 218, 0.12), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(246, 138, 0, 0.1), transparent 30%),
+    radial-gradient(circle at 34% 82%, rgba(56, 181, 51, 0.08), transparent 24%),
+    radial-gradient(circle at 74% 26%, rgba(255, 212, 0, 0.08), transparent 22%),
+    linear-gradient(180deg, rgba(246, 247, 249, 0.98) 0%, rgba(236, 240, 246, 0.98) 100%);
+  box-shadow: 0 24px 70px rgba(30, 32, 37, 0.07);
+}
+
+.sk-corp-panel-dark {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(circle at 18% 16%, rgba(234, 0, 22, 0.14), transparent 20%),
+    radial-gradient(circle at 82% 18%, rgba(246, 138, 0, 0.14), transparent 18%),
+    radial-gradient(circle at 54% 14%, rgba(255, 212, 0, 0.12), transparent 20%),
+    radial-gradient(circle at 78% 80%, rgba(26, 151, 218, 0.14), transparent 24%),
+    radial-gradient(circle at 24% 78%, rgba(56, 181, 51, 0.12), transparent 20%),
+    linear-gradient(180deg, #2c2a31 0%, #232128 100%);
+  box-shadow: 0 34px 120px rgba(14, 16, 20, 0.28);
+}
+
+.sk-corp-chip {
+  border: 1px solid rgba(62, 59, 64, 0.1);
+  background: rgba(255, 255, 255, 0.72);
+  color: rgba(62, 59, 64, 0.74);
+}
+
+.sk-corp-kicker {
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.sk-corp-rule {
+  background: linear-gradient(90deg, rgba(26, 151, 218, 0.42), rgba(56, 181, 51, 0));
+}
+
+.sk-corp-rule-invert {
+  background: linear-gradient(90deg, rgba(255, 212, 0, 0.52), rgba(246, 138, 0, 0));
+}
+
+.sk-corp-hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 96px 96px;
+}
+
+.sk-copy {
+  font-size: clamp(0.98rem, 0.96rem + 0.18vw, 1.05rem);
+  line-height: 1.78;
+  letter-spacing: 0.01em;
+}
+
+.sk-copy-soft {
+  font-size: 0.95rem;
+  line-height: 1.76;
+  letter-spacing: 0.01em;
+}
+
+.sk-copy-invert {
+  font-size: 0.95rem;
+  line-height: 1.76;
+  letter-spacing: 0.01em;
+  color: rgba(255, 246, 234, 0.76);
+}
+
+@keyframes sk-brand-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.sk-brand-marquee-track {
+  min-width: max-content;
+  animation: sk-brand-marquee 34s linear infinite;
+  will-change: transform;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Star animation for login page */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+/* Glass morphism */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--sk-red) 0%, var(--sk-orange) 22%, var(--sk-yellow) 44%, var(--sk-green) 68%, var(--sk-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes starlight-drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0);
+  }
+}
+
+@keyframes starlight-pulse {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+@keyframes starlight-scan {
+  0% {
+    transform: translateY(-115%);
+  }
+  100% {
+    transform: translateY(115%);
+  }
+}
+
+.hero-drift {
+  animation: starlight-drift 8s ease-in-out infinite;
+}
+
+.hero-drift-slow {
+  animation: starlight-drift 12s ease-in-out infinite;
+}
+
+.orbit-pulse {
+  animation: starlight-pulse 4.8s ease-in-out infinite;
+}
+
+.data-scan::after {
+  content: '';
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: -30%;
+  height: 22%;
+  background: linear-gradient(180deg, transparent, rgba(126, 167, 255, 0.16), transparent);
+  opacity: 0.7;
+  pointer-events: none;
+  animation: starlight-scan 6s linear infinite;
+}

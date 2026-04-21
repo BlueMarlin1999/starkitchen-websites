@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title>Star Kitchen</title>
+  <desc>Star Kitchen brand favicon</desc>
+  <defs>
+    <linearGradient id="bg" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#163e76" />
+      <stop offset="1" stop-color="#0d2347" />
+    </linearGradient>
+    <linearGradient id="star" x1="19" y1="16" x2="45" y2="46" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f5c67a" />
+      <stop offset="1" stop-color="#e18a2e" />
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#bg)" />
+  <path
+    d="M32 14.5l3.55 8.86 9.52.68-7.31 6.14 2.33 9.25L32 34.4l-8.09 5.03 2.33-9.25-7.31-6.14 9.52-.68L32 14.5z"
+    fill="url(#star)"
+  />
+  <circle cx="44" cy="19" r="3" fill="#fff4d6" fill-opacity=".95" />
+</svg>
