@@ -33,7 +33,7 @@ export default function HelpPage() {
     { title: '使用文档', icon: Book, desc: 'Docs', href: '/dashboard/documents/' },
     { title: '视频教程', icon: Video, desc: 'Videos', href: '/dashboard/reports/' },
     { title: '在线客服', icon: MessageCircle, desc: 'Chat', href: '/dashboard/chat/' },
-    { title: '邮件支持', icon: Mail, desc: 'support@starkitchen.works', href: 'mailto:support@starkitchen.works' },
+    { title: '邮件支持', icon: Mail, desc: 'hello@starkitchen.ai', href: 'mailto:hello@starkitchen.ai' },
   ]
   const normalizedKeyword = keyword.trim().toLowerCase()
   const filteredFaqs = faqs.filter((faq) => {

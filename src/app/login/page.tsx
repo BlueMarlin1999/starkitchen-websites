@@ -12,7 +12,6 @@ import { useAuthStore } from '@/store/auth'
 import { CompanyLogo } from '@/components/company-logo'
 import { PRODUCT_NAME_ZH } from '@/lib/brand'
 import { hasAvailableAuthService } from '@/lib/runtime-config'
-import { isLocalAdminLoginEnabled, isLocalAdminSession } from '@/store/auth'
 
 const LOGIN_COMPANY_NAME_ZH = '星座厨房服务集团'
 const LOGIN_COMPANY_NAME_EN = 'Star Kitchen Hospitality Group'
@@ -144,7 +143,6 @@ const LoginCardView = ({
   error,
   isSessionTimeout,
   authServiceConfigured,
-  localAdminEnabled,
   handleLogin,
   employeeId,
   setEmployeeId,
@@ -157,7 +155,6 @@ const LoginCardView = ({
   error: string
   isSessionTimeout: boolean
   authServiceConfigured: boolean
-  localAdminEnabled: boolean
   handleLogin: (event: FormEvent<HTMLFormElement>) => Promise<void>
   employeeId: string
   setEmployeeId: (value: string) => void
@@ -185,11 +182,7 @@ const LoginCardView = ({
         ) : null}
         {!authServiceConfigured ? (
           <LoginNotice
-            content={
-              localAdminEnabled
-                ? '当前环境未接入后端认证服务，仅开放管理员账号登录。'
-                : '当前环境未接入后端认证服务，且本地管理员登录已禁用。'
-            }
+            content="当前环境未开放登录服务，请联系管理员检查认证配置。"
             className="rounded-lg bg-amber-500/10 py-2 text-center text-sm text-amber-200"
           />
         ) : null}
@@ -214,8 +207,6 @@ const useLoginRedirectGuard = ({
   hasHydrated,
   rememberedEmployeeId,
   isAuthenticated,
-  authServiceConfigured,
-  allowStandaloneAdmin,
   nextPath,
   userRole,
   router,
@@ -225,8 +216,6 @@ const useLoginRedirectGuard = ({
   hasHydrated: boolean
   rememberedEmployeeId: string
   isAuthenticated: boolean
-  authServiceConfigured: boolean
-  allowStandaloneAdmin: boolean
   nextPath: string | null
   userRole?: string
   router: ReturnType<typeof useRouter>
@@ -239,12 +228,10 @@ const useLoginRedirectGuard = ({
       setEmployeeId(rememberedEmployeeId)
       setRemember(true)
     }
-    if (isAuthenticated && (authServiceConfigured || allowStandaloneAdmin)) {
+    if (isAuthenticated) {
       router.push(resolvePostLoginPath(nextPath, userRole))
     }
   }, [
-    allowStandaloneAdmin,
-    authServiceConfigured,
     hasHydrated,
     isAuthenticated,
     nextPath,
@@ -303,7 +290,7 @@ const createLoginSubmitHandler = ({
 export default function LoginPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const { login, isAuthenticated, hasHydrated, rememberedEmployeeId, user, token } = useAuthStore()
+  const { login, isAuthenticated, hasHydrated, rememberedEmployeeId, user } = useAuthStore()
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
   const [employeeId, setEmployeeId] = useState('')
@@ -311,15 +298,11 @@ export default function LoginPage() {
   const [remember, setRemember] = useState(true)
   const isSessionTimeout = searchParams.get('timeout') === '1'
   const authServiceConfigured = hasAvailableAuthService()
-  const localAdminEnabled = isLocalAdminLoginEnabled()
-  const allowStandaloneAdmin = isLocalAdminSession(user, token)
   const nextPath = searchParams.get('next')
   useLoginRedirectGuard({
     hasHydrated,
     rememberedEmployeeId,
     isAuthenticated,
-    authServiceConfigured,
-    allowStandaloneAdmin,
     nextPath,
     userRole: user?.role,
     router,
@@ -336,7 +319,7 @@ export default function LoginPage() {
     setError,
     setIsLoading,
   })
-  const cardProps = { error, isSessionTimeout, authServiceConfigured, localAdminEnabled, handleLogin, employeeId, setEmployeeId, password, setPassword, remember, setRemember, isLoading }
+  const cardProps = { error, isSessionTimeout, authServiceConfigured, handleLogin, employeeId, setEmployeeId, password, setPassword, remember, setRemember, isLoading }
 
   return (
     <LoginPageShell>

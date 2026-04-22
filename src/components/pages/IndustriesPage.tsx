@@ -93,7 +93,7 @@ export default function IndustriesPage() {
           <SectionHeading
             eyebrow="Playbooks"
             title="场景不同，真正要设计的是供给逻辑、组织节奏与体验标准"
-            description="下面这些 playbooks 更接近真实业务语言，适合后续继续扩展为案例页、解决方案页或销售演示页。"
+            description="下面这些 playbooks 更接近真实业务语言，帮助合作方更快判断供给逻辑、执行重点与组织节奏。"
           />
 
           <div className="mt-12 grid gap-5 xl:grid-cols-2">
@@ -138,7 +138,7 @@ export default function IndustriesPage() {
           <SectionHeading
             eyebrow="Next Step"
             title="如果你已经有明确场景，我们可以直接从场景出发讨论合作方式"
-            description="内页已经有了行业表达，下一阶段可以继续补案例、服务包结构和场景级商业叙事。"
+            description="从单一场景试点到区域化服务网络，我们都建议先把供给节奏、履约标准与组织边界对齐。"
             invert
           />
 

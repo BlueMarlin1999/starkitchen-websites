@@ -38,10 +38,10 @@ export function AiTechSiteShell({ children }: AiTechSiteShellProps) {
 
           <div className="flex items-center gap-3">
             <Link
-              href="/dashboard/ai"
+              href="#platform"
               className="hidden rounded-full border border-white/12 bg-white/6 px-4 py-2 text-sm text-white/76 transition-colors hover:bg-white/10 sm:inline-flex"
             >
-              查看现有 AI 中心
+              查看平台能力
             </Link>
             <Link
               href="#contact"

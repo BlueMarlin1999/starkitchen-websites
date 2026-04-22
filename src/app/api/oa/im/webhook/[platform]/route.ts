@@ -362,8 +362,7 @@ const resolveInternalAuthToken = (input: { senderEmployeeId: string; senderName:
   if (embedded) return embedded
   return (
     clip(process.env.LLM_ADMIN_TOKEN, '', 300) ||
-    clip(process.env.LOCAL_ADMIN_TOKEN, '', 300) ||
-    clip(process.env.NEXT_PUBLIC_LOCAL_ADMIN_TOKEN, '', 300)
+    clip(process.env.LOCAL_ADMIN_TOKEN, '', 300)
   )
 }
 

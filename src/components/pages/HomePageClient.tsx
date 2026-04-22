@@ -15,6 +15,7 @@ import {
   commitmentCards,
   heroSignals,
   industryFocus,
+  operatingPrinciples,
   serviceLayers,
 } from '@/lib/corporate-content'
 import { corporateDisplay, corporateMono, corporateSans } from '@/lib/corporate-fonts'
@@ -203,10 +204,10 @@ function HeroSection() {
                 <ChevronRight className="h-4 w-4 text-[var(--sk-action)]" />
               </Link>
               <Link
-                href="/login/"
+                href="/industries"
                 className="inline-flex items-center gap-2 rounded-full border border-[rgba(23,28,25,0.08)] px-6 py-3 text-sm font-semibold text-[rgba(23,28,25,0.72)] transition-colors hover:bg-white/60 hover:text-[var(--sk-ink)]"
               >
-                进入管理平台
+                查看行业场景
               </Link>
             </div>
 
@@ -906,7 +907,7 @@ function AiLayerSection() {
               '把风险、机会和优先级做成同一张经营地图',
               '让营运、财务、人效和供应链共享判断上下文',
               '把建议推进为任务、会议、复盘与责任分配',
-              '为 starkitchenai.com 预留完整的技术叙事入口'
+              '把品牌、运营与智能系统放进同一套组织底座'
             ].map((item) => (
               <div key={item} className="flex gap-3 rounded-[1.45rem] border border-[rgba(255,255,255,0.12)] bg-[rgba(255,255,255,0.04)] p-4 text-[13px] text-[rgba(255,246,234,0.74)]">
                 <BadgeCheck className="mt-1 h-4 w-4 flex-none text-[var(--sk-yellow)]" />
@@ -979,29 +980,22 @@ function FutureSection() {
 
         <div className="sk-corp-panel-soft rounded-[2.3rem] p-8 sm:p-10">
           <p className={cn(corporateMono.className, 'sk-corp-kicker text-[11px] text-[rgba(23,28,25,0.5)]')}>
-            domain architecture
+            brand expression
           </p>
           <h3 className="mt-5 max-w-[16ch] text-[clamp(1.85rem,2.5vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-[var(--sk-ink)]">
-            <span className="text-[var(--sk-action)]">starkitchen.ai</span> 讲公司与能力，
-            <span className="block"><span className="text-[var(--sk-red)]">starkitchenai.com</span> 讲产品与技术。</span>
+            让合作方记住我们的，不只是味道，更是秩序、温度与执行力。
           </h3>
           <p className="mt-5 text-[15px] leading-7 text-[rgba(23,28,25,0.72)]">
-            这两个域名不应该混在一起使用。公司官网负责建立信任、行业理解与服务能力认知；AI 技术站负责讲产品、Agent、接口与连锁服务业的智能化升级。
+            Star Kitchen 希望传达的是国际标准下的服务美学、本土温度里的运营纪律，以及由 AI 放大的组织执行力。
           </p>
 
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            <div className="sk-corp-panel rounded-[1.7rem] p-5">
-              <p className="text-[15px] font-semibold text-[var(--sk-ink)]">starkitchen.ai</p>
-              <p className="mt-2 text-[13px] leading-6 text-[rgba(23,28,25,0.72)]">
-                面向客户、合作伙伴和品牌沟通的公司官网，强调服务能力与集团叙事。
-              </p>
-            </div>
-            <div className="sk-corp-panel rounded-[1.7rem] p-5">
-              <p className="text-[15px] font-semibold text-[var(--sk-ink)]">starkitchenai.com</p>
-              <p className="mt-2 text-[13px] leading-6 text-[rgba(23,28,25,0.72)]">
-                面向连锁服务业数字化升级的 AI 技术官网，强调产品、系统和智能运营。
-              </p>
-            </div>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {operatingPrinciples.map((item) => (
+              <div key={item.title} className="sk-corp-panel rounded-[1.7rem] p-5">
+                <p className="text-[15px] font-semibold text-[var(--sk-ink)]">{item.title}</p>
+                <p className="mt-2 text-[13px] leading-6 text-[rgba(23,28,25,0.72)]">{item.description}</p>
+              </div>
+            ))}
           </div>
 
           <div className="mt-8 rounded-[1.8rem] bg-[var(--sk-deep)] p-6 text-white">
@@ -1012,7 +1006,7 @@ function FutureSection() {
               Global flavors. Local hearts. Smart execution.
             </p>
             <p className="mt-3 text-[13px] leading-6 text-[rgba(255,246,234,0.72)]">
-              这会是 Star Kitchen 最终应该留下来的视觉印象，而不是一个“也许能用”的普通 landing page。
+              这也是 Star Kitchen 希望留给合作方、顾客与团队的统一品牌印象。
             </p>
           </div>
         </div>
@@ -1026,12 +1020,12 @@ function ContactSection() {
     <section className="sk-corp-panel-dark rounded-[2.7rem] px-6 py-14 text-[#fff8ef] sm:px-8 lg:px-12">
       <div className="grid gap-8 xl:grid-cols-[1.08fr_0.92fr] xl:items-end">
         <div>
-          <p className={cn(corporateMono.className, 'sk-corp-kicker text-[11px] text-[var(--sk-yellow)]')}>Contact & platform</p>
+          <p className={cn(corporateMono.className, 'sk-corp-kicker text-[11px] text-[var(--sk-yellow)]')}>Contact & collaboration</p>
           <h2 className="mt-5 max-w-[16ch] text-[clamp(1.9rem,2.7vw,2.8rem)] font-semibold leading-[1.08] tracking-[-0.02em] text-[#fffaf1]">
-            让品牌介绍、商务沟通和平台入口，都拥有一个配得上 Star Kitchen 的门面。
+            从第一轮沟通开始，就把场景、目标与合作方式说清楚。
           </h2>
           <p className="mt-5 max-w-3xl text-[15px] leading-7 text-[rgba(255,246,234,0.72)]">
-            这一轮先把官网气质拉到对的位置。下一阶段可以继续补案例、团队、新闻、商务资料、招商与正式联系表单。
+            无论你关注的是集团餐饮服务、中央厨房与供应协同，还是 AI 经营系统与组织升级，我们都希望先围绕真实业务场景展开对话。
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -1043,10 +1037,10 @@ function ContactSection() {
               <ArrowRight className="h-4 w-4 text-[var(--sk-action)]" />
             </Link>
             <Link
-              href="/login/"
+              href="/capabilities"
               className="inline-flex items-center gap-2 rounded-full border border-[rgba(216,195,164,0.16)] bg-white/5 px-6 py-3 text-sm font-semibold text-[#fff8ef] transition-colors hover:bg-white/10"
             >
-              进入管理平台
+              查看核心能力
             </Link>
           </div>
         </div>
@@ -1054,16 +1048,16 @@ function ContactSection() {
         <div className="grid gap-4">
           {[
             {
-              title: '公司官网主叙事',
-              description: '对外讲清楚 Star Kitchen 是什么样的服务集团，以及为什么它与传统餐饮公司不同。'
+              title: '集团餐饮服务合作',
+              description: '适合企业园区、教育、医疗、酒店与工业服务网络的餐饮服务合作讨论。'
             },
             {
-              title: '平台入口保留',
-              description: '内部团队与演示用户仍然可以从同一域名快速进入管理平台，不影响现有工作流。'
+              title: '中央厨房与供应协同',
+              description: '适合围绕生产组织、履约稳定性、采购协同与成本纪律展开专项咨询。'
             },
             {
-              title: '技术品牌预留',
-              description: '后续 starkitchenai.com 可以独立承接 AI 产品、系统能力与解决方案内容。'
+              title: 'AI 经营系统与试点',
+              description: '适合希望把经营分析、任务闭环、智能体协作与治理能力接进服务网络的团队。'
             }
           ].map((item) => (
             <div key={item.title} className="rounded-[1.7rem] border border-[rgba(216,195,164,0.14)] bg-white/[0.04] p-5">

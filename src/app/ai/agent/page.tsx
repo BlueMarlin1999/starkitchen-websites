@@ -197,7 +197,7 @@ export default function StarshipAgentPage() {
               <CardDescription className="text-slate-300">
                 权限透传 Access Synced
                 <span className="mx-1 rounded-md bg-white/10 px-2 py-1 text-xs text-slate-100">
-                  www.starkitchen.works/dashboard/agents
+                  /dashboard/agents
                 </span>
               </CardDescription>
             </CardHeader>

@@ -5,34 +5,11 @@ import { buildApiUrl } from '@/lib/runtime-config'
 
 const LEGACY_LOCAL_ADMIN_USER_ID = 'admin-marlins'
 
-const parseBooleanFlag = (value?: string) => {
-  if (!value) return null
-  const normalized = value.trim().toLowerCase()
-  if (normalized === '1' || normalized === 'true' || normalized === 'yes' || normalized === 'on') {
-    return true
-  }
-  if (normalized === '0' || normalized === 'false' || normalized === 'no' || normalized === 'off') {
-    return false
-  }
-  return null
-}
-
-const localAdminEnabledByEnv = parseBooleanFlag(process.env.NEXT_PUBLIC_ALLOW_LOCAL_ADMIN_LOGIN)
-const isProductionRuntime = process.env.NODE_ENV === 'production'
-const LOCAL_ADMIN_ENABLED = localAdminEnabledByEnv ?? !isProductionRuntime
-const LOCAL_ADMIN_USERNAME = (process.env.NEXT_PUBLIC_LOCAL_ADMIN_USERNAME || '').trim()
-const LOCAL_ADMIN_PASSWORD = (process.env.NEXT_PUBLIC_LOCAL_ADMIN_PASSWORD || '').trim()
-const LOCAL_ADMIN_TOKEN = (process.env.NEXT_PUBLIC_LOCAL_ADMIN_TOKEN || '').trim()
-const LOCAL_ADMIN_DISPLAY_NAME = (process.env.NEXT_PUBLIC_LOCAL_ADMIN_DISPLAY_NAME || '').trim()
-const LOCAL_ADMIN_USER_ID = LOCAL_ADMIN_USERNAME
-  ? `admin-${LOCAL_ADMIN_USERNAME.toLowerCase()}`
-  : 'admin-local'
-const hasLocalAdminCredentials =
-  LOCAL_ADMIN_ENABLED &&
-  Boolean(LOCAL_ADMIN_USERNAME && LOCAL_ADMIN_PASSWORD && LOCAL_ADMIN_TOKEN)
-
 const isStringArray = (value: unknown): value is string[] =>
   Array.isArray(value) && value.every((item) => typeof item === 'string')
+
+const isLegacyClientAdminSession = (user: AppUser | null) =>
+  Boolean(user && (user.id === LEGACY_LOCAL_ADMIN_USER_ID || user.id === 'admin-local' || user.id.startsWith('admin-')))
 
 const parsePersistedUser = (value: unknown): AppUser | null => {
   if (!value || typeof value !== 'object') return null
@@ -68,30 +45,12 @@ const parsePersistedAuthSession = (persistedState: unknown) => {
   const token = typeof snapshot.token === 'string' ? snapshot.token : ''
   const isAuthenticated = snapshot.isAuthenticated === true && Boolean(user) && Boolean(token)
 
-  const isLegacyLocalAdminSession = user?.id === LEGACY_LOCAL_ADMIN_USER_ID
-  const hasDisabledLocalAdminSession =
-    user?.id === LOCAL_ADMIN_USER_ID && token === LOCAL_ADMIN_TOKEN && !hasLocalAdminCredentials
-  const shouldInvalidate = isLegacyLocalAdminSession || hasDisabledLocalAdminSession
-
-  if (shouldInvalidate) {
+  if (isLegacyClientAdminSession(user)) {
     return { rememberedEmployeeId, user: null, token: '', isAuthenticated: false }
   }
 
   return { rememberedEmployeeId, user, token, isAuthenticated }
 }
-
-export const isLocalAdminEmployeeId = (employeeId: string) =>
-  hasLocalAdminCredentials && employeeId.trim().toLowerCase() === LOCAL_ADMIN_USERNAME.toLowerCase()
-
-export const isLocalAdminLoginEnabled = () => hasLocalAdminCredentials
-
-export const isLocalAdminSession = (user: AppUser | null, token: string) =>
-  Boolean(
-    hasLocalAdminCredentials &&
-      user &&
-      user.id === LOCAL_ADMIN_USER_ID &&
-      token === LOCAL_ADMIN_TOKEN
-  )
 
 interface AuthState {
   user: AppUser | null
@@ -116,20 +75,6 @@ type AuthLoginResult = { success: boolean; message?: string }
 
 const updateRememberedEmployeeId = (set: AuthSetState, employeeId: string, remember: boolean) => {
   set({ rememberedEmployeeId: remember ? employeeId : '' })
-}
-
-const buildLocalAdminUser = (employeeId: string): AppUser => {
-  const role = 'ceo'
-  const scopePath = getRoleBaseScopePath(role, ['global'])
-  const displayName = LOCAL_ADMIN_DISPLAY_NAME || employeeId
-  return {
-    id: LOCAL_ADMIN_USER_ID,
-    name: displayName,
-    nickname: displayName,
-    employeeId,
-    role,
-    scopePath,
-  }
 }
 
 const applySuccessfulLogin = (
@@ -235,17 +180,6 @@ const createLoginAction =
   (set: AuthSetState): AuthState['login'] =>
   async (employeeId, password, remember) => {
     const normalizedEmployeeId = employeeId.trim()
-    const normalizedPassword = password.trim()
-    if (isLocalAdminEmployeeId(normalizedEmployeeId) && normalizedPassword === LOCAL_ADMIN_PASSWORD) {
-      applySuccessfulLogin(
-        set,
-        buildLocalAdminUser(normalizedEmployeeId),
-        LOCAL_ADMIN_TOKEN,
-        normalizedEmployeeId,
-        remember
-      )
-      return { success: true }
-    }
     const result = await loginViaBackend(normalizedEmployeeId, password)
     if (!result.success || !result.user || !result.token) {
       return {
@@ -291,7 +225,7 @@ const authPersistOptions = {
     isAuthenticated: state.isAuthenticated,
     rememberedEmployeeId: state.rememberedEmployeeId,
   }),
-  version: 3,
+  version: 4,
   migrate: (persistedState: unknown) => parsePersistedAuthSession(persistedState),
   merge: (persistedState: unknown, currentState: AuthState) => ({
     ...currentState,

@@ -370,23 +370,15 @@ const parseEnvRawAccounts = (): RawAuthAccountConfig[] => {
 }
 
 const buildLegacyAdminRawAccount = (): RawAuthAccountConfig | null => {
-  const employeeId = clip(
-    process.env.LOCAL_ADMIN_USERNAME || process.env.NEXT_PUBLIC_LOCAL_ADMIN_USERNAME || '',
-    80
-  )
-  const password = clip(
-    process.env.LOCAL_ADMIN_PASSWORD || process.env.NEXT_PUBLIC_LOCAL_ADMIN_PASSWORD || '',
-    200
-  )
-  const mobile = normalizeMobile(
-    process.env.LOCAL_ADMIN_MOBILE || process.env.NEXT_PUBLIC_LOCAL_ADMIN_MOBILE || ''
-  )
+  const employeeId = clip(process.env.LOCAL_ADMIN_USERNAME || '', 80)
+  const password = clip(process.env.LOCAL_ADMIN_PASSWORD || '', 200)
+  const mobile = normalizeMobile(process.env.LOCAL_ADMIN_MOBILE || '')
   if (!employeeId || !password || !mobile) return null
 
   return {
     employeeId,
     password,
-    name: clip(process.env.LOCAL_ADMIN_DISPLAY_NAME || process.env.NEXT_PUBLIC_LOCAL_ADMIN_DISPLAY_NAME || employeeId, 80),
+    name: clip(process.env.LOCAL_ADMIN_DISPLAY_NAME || employeeId, 80),
     role: 'ceo',
     scopePath: 'global',
     mobile,

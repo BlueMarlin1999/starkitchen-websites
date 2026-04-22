@@ -26,7 +26,7 @@ export default function ContactPage() {
                 从第一次沟通开始，就把业务场景、服务边界和系统方向说清楚
               </h1>
               <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600 sm:text-xl">
-                这一版官网先使用现有联系入口承接商务与品牌沟通。后续如果你愿意，我们可以再加正式表单、团队介绍、商务资料下载和案例预约模块。
+                我们用一个统一入口承接商务合作、品牌沟通与 AI 方案讨论，再根据议题把对话快速交给对应团队。
               </p>
             </div>
 
@@ -121,36 +121,36 @@ export default function ContactPage() {
 
           <div className="rounded-[2.25rem] border border-slate-900/10 bg-white p-8 shadow-[0_20px_60px_rgba(15,23,42,0.05)] sm:p-10">
             <p className={cn(corporateMono.className, 'text-xs uppercase tracking-[0.32em] text-slate-500')}>
-              Brand architecture
+              Conversation focus
             </p>
             <h3 className={cn(corporateDisplay.className, 'mt-4 text-3xl font-semibold text-slate-950 sm:text-4xl')}>
-              `starkitchen.ai` 与 `starkitchenai.com` 应该各自承担不同任务
+              不同议题，可以从同一个合作入口开始对齐
             </h3>
             <p className="mt-4 text-sm leading-7 text-slate-600">
-              公司官网负责建立信任、行业理解与服务能力认知；AI 技术站负责讲产品、Agent、数据底座与技术演进。这样品牌层次会更清楚，也更容易对外沟通。
+              无论你更关注集团餐饮服务、供应协同，还是 AI 经营系统，我们都建议先明确目标场景、组织边界与阶段重点。
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-[1.5rem] border border-slate-900/10 bg-[#fcfaf6] p-5">
-                <p className="text-lg font-semibold text-slate-950">starkitchen.ai</p>
+                <p className="text-lg font-semibold text-slate-950">集团服务合作</p>
                 <p className="mt-2 text-sm leading-7 text-slate-600">
-                  面向客户、合作伙伴和品牌沟通的公司官网，强调集团能力、行业理解和服务方法。
+                  适合围绕企业园区、教育、医疗、酒店与工业服务空间的餐饮网络展开沟通。
                 </p>
               </div>
               <div className="rounded-[1.5rem] border border-slate-900/10 bg-[#fcfaf6] p-5">
-                <p className="text-lg font-semibold text-slate-950">starkitchenai.com</p>
+                <p className="text-lg font-semibold text-slate-950">AI 经营系统与试点</p>
                 <p className="mt-2 text-sm leading-7 text-slate-600">
-                  面向连锁服务业数字化升级的 AI 技术官网，强调系统架构、产品矩阵与智能运营能力。
+                  适合围绕经营分析、任务闭环、Agent 协作、多系统集成与治理要求展开讨论。
                 </p>
               </div>
             </div>
 
             <div className="mt-8 flex flex-wrap gap-4">
               <Link
-                href="/about"
+                href="/industries"
                 className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
               >
-                回看公司定位
+                回看行业场景
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link

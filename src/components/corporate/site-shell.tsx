@@ -60,12 +60,6 @@ export function CorporateSiteShell({ activePath, children }: CorporateSiteShellP
 
             <div className="flex items-center gap-3">
               <Link
-                href="/login/"
-                className="hidden rounded-full border border-[rgba(23,28,25,0.1)] bg-white/45 px-4 py-2 text-sm text-[rgba(23,28,25,0.74)] transition-colors hover:border-[rgba(23,28,25,0.18)] hover:bg-white/70 hover:text-[var(--sk-ink)] sm:inline-flex"
-              >
-                进入管理平台
-              </Link>
-              <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-full bg-[var(--sk-action)] px-4 py-2 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
               >
@@ -108,10 +102,10 @@ export function CorporateSiteShell({ activePath, children }: CorporateSiteShellP
                 <ArrowRight className="h-4 w-4 text-[var(--sk-yellow)]" />
               </Link>
               <Link
-                href="/login/"
+                href="/capabilities"
                 className="inline-flex items-center gap-2 rounded-full border border-[rgba(255,255,255,0.12)] px-5 py-3 text-sm text-[rgba(255,255,255,0.74)] transition-colors hover:bg-white/5"
               >
-                管理平台入口
+                查看核心能力
               </Link>
             </div>
           </div>
@@ -136,6 +130,9 @@ export function CorporateSiteShell({ activePath, children }: CorporateSiteShellP
                 </a>
                 <span>Star Kitchen Hospitality Group / SK Group</span>
                 <span>© 2026 Star Kitchen Hospitality Group.</span>
+                <Link href="/login/" className="text-[rgba(255,255,255,0.54)] transition-colors hover:text-white">
+                  团队登录
+                </Link>
               </div>
             </div>
           </div>

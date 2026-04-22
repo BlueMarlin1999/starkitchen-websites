@@ -142,17 +142,17 @@ function HeroSection() {
                 </h2>
               </div>
               <div className="rounded-[1.2rem] border border-white/12 bg-white/6 px-3 py-2 text-right">
-                <p className="text-[11px] text-white/56">live state</p>
-                <p className="mt-1 text-sm font-semibold text-[var(--sk-green)]">governed</p>
+                <p className="text-[11px] text-white/56">preview state</p>
+                <p className="mt-1 text-sm font-semibold text-[var(--sk-green)]">illustrative</p>
               </div>
             </div>
 
             <div className="mt-8 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
               <div className="rounded-[1.8rem] border border-white/10 bg-[rgba(255,255,255,0.04)] p-5">
                 <div className="flex items-center justify-between gap-3">
-                  <p className="text-sm font-semibold text-white">Today’s signals</p>
+                  <p className="text-sm font-semibold text-white">经营信号</p>
                   <span className="rounded-full bg-[rgba(26,151,218,0.14)] px-3 py-1 text-[11px] text-[var(--sk-blue)]">
-                    multi-site
+                    illustrative preview
                   </span>
                 </div>
                 <div className="mt-5 space-y-4">
@@ -459,10 +459,10 @@ function ContactSection() {
             contact
           </p>
           <h2 className="mt-5 max-w-[15ch] text-[clamp(2rem,3vw,3rem)] font-semibold leading-[1.04] tracking-[-0.028em] text-white">
-            如果你想做的不只是 AI 展示，而是服务业 AI 落地，我们可以继续往下走。
+            让服务业 AI 从展示概念，进入可治理、可执行、可落地的运营系统。
           </h2>
           <p className="mt-5 max-w-[40rem] text-[15px] leading-7 text-white/72 sm:text-[16px] sm:leading-8">
-            下一阶段可以继续补产品内页、场景案例、平台截图、定价与联系销售流程，也可以直接把现有 AI 中心能力整理成对外 Demo 站。
+            如果你正在为连锁餐饮、团餐、酒店、物业或服务零售寻找下一代运营底座，我们可以从真实场景、数据接入、治理要求和试点路径开始对齐。
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
@@ -474,23 +474,23 @@ function ContactSection() {
               <ArrowRight className="h-4 w-4 text-[var(--sk-yellow)]" />
             </Link>
             <Link
-              href="/dashboard/ai"
+              href="#capabilities"
               className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >
-              查看现有 AI 中心
+              查看能力矩阵
             </Link>
           </div>
         </div>
 
         <div className="rounded-[2.4rem] border border-white/10 bg-[linear-gradient(180deg,rgba(7,33,61,0.82),rgba(6,17,33,0.9))] p-8 sm:p-10">
           <p className={cn(corporateMono.className, 'text-[10px] uppercase tracking-[0.22em] text-[var(--sk-orange)]')}>
-            delivery focus
+            engagement focus
           </p>
           <div className="mt-6 space-y-4">
             {[
-              '先做对外官网首页与产品叙事，把 starkitchenai.com 和集团公司官网彻底分开。',
-              '把现有 AI 指挥台、智能体、能力包、工作流页面抽成对外产品故事与 Demo 模块。',
-              '再逐步补销售线索收集、正式案例、集成说明与产品化定价页面。',
+              '从单一场景试点开始，把门店、区域或总部的关键问题放进同一套 AI 运营语境。',
+              '与现有 OA、财务、供应链、内容与经营看板协同，而不是替换全部系统。',
+              '先建立权限、审计、版本与工作流治理，再逐步扩大到更复杂的组织网络。',
             ].map((item) => (
               <div key={item} className="rounded-[1.45rem] border border-white/10 bg-white/[0.04] p-4">
                 <p className="text-[13px] leading-6 text-white/72">{item}</p>

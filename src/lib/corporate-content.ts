@@ -121,7 +121,7 @@ export const corporateNavItems: CorporateNavItem[] = [
   { href: '/contact', label: '联系我们' },
 ]
 
-export const corporateContactEmail = 'support@starkitchen.works'
+export const corporateContactEmail = 'hello@starkitchen.ai'
 
 export const brandPositioning =
   '以“环球美味 邻里共享”为引领，打造兼具国际标准与本土温度的餐饮与服务生态品牌。'

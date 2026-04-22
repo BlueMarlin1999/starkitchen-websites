@@ -15,10 +15,10 @@ export default function NotFound() {
             返回首页
           </Link>
           <Link
-            href="/dashboard/"
+            href="/contact"
             className="px-6 py-3 rounded-xl border border-white/10 text-slate-300 text-sm font-medium hover:border-white/25 transition-colors"
           >
-            进入驾驶舱
+            联系团队
           </Link>
         </div>
       </div>

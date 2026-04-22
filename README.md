@@ -48,7 +48,18 @@ Minimal public variable used by the current deployment:
 
 - `NEXT_PUBLIC_AGENTS_API_URL`
 
-There are many optional server-side integration variables for GAIA, OA, finance sync, auth bootstrap, and AI workflow storage. Those should be configured in the deployment platform, not committed to Git.
+Optional server-side auth bootstrap should stay private and never use `NEXT_PUBLIC_` prefixes:
+
+- `ENABLE_EMBEDDED_AUTH`
+- `EMBEDDED_AUTH_SIGNING_SECRET`
+- `EMBEDDED_AUTH_USERS_JSON`
+- `LOCAL_ADMIN_USERNAME`
+- `LOCAL_ADMIN_PASSWORD`
+- `LOCAL_ADMIN_MOBILE`
+- `LOCAL_ADMIN_DISPLAY_NAME`
+- `LOCAL_ADMIN_TOKEN`
+
+There are many other optional server-side integration variables for GAIA, OA, finance sync, and AI workflow storage. Those should be configured in the deployment platform, not committed to Git.
 
 ## Build
 

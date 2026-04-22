@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { Bot, LayoutDashboard, BadgeDollarSign, Store, Truck } from 'lucide-react'
 import { Sidebar } from '@/components/sidebar'
 import { Header } from '@/components/header'
-import { isLocalAdminSession, useAuthStore } from '@/store/auth'
+import { useAuthStore } from '@/store/auth'
 import { Button } from '@/components/ui/button'
 import { hasAvailableAuthService } from '@/lib/runtime-config'
 import { cn } from '@/lib/utils'
@@ -18,11 +18,10 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
   const AUTO_COLLAPSE_BREAKPOINT = 900
   const router = useRouter()
   const pathname = usePathname()
-  const { isAuthenticated, hasHydrated, logout, user, token } = useAuthStore()
+  const { isAuthenticated, hasHydrated, logout, user } = useAuthStore()
   const { resolvedTheme, text } = useUIPreferences()
   const isLightTheme = resolvedTheme === 'light'
   const authServiceConfigured = hasAvailableAuthService()
-  const allowStandaloneAdmin = isLocalAdminSession(user, token)
 
   const buildLoginHref = useCallback(
     (timeout?: boolean) => {
@@ -48,13 +47,10 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
     if (!hasHydrated) return
 
     if (!authServiceConfigured) {
-      if (isAuthenticated && !allowStandaloneAdmin) {
+      if (isAuthenticated) {
         logout()
       }
-
-      if (!isAuthenticated || !allowStandaloneAdmin) {
-        router.replace(buildLoginHref())
-      }
+      router.replace(buildLoginHref())
       return
     }
 
@@ -62,7 +58,6 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
       router.replace(buildLoginHref())
     }
   }, [
-    allowStandaloneAdmin,
     authServiceConfigured,
     buildLoginHref,
     hasHydrated,
