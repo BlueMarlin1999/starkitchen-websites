@@ -35,10 +35,10 @@ const corporateMetadata: Metadata = {
       '以“环球美味 邻里共享、国际标准 数智未来”为品牌主张，把国际餐饮标准、本土温度、服务美学与数智能力连接起来。',
     images: [
       {
-        url: '/brand/star-kitchen-logo.jpg',
-        width: 1280,
-        height: 1707,
-        alt: 'Star Kitchen',
+        url: '/api/og?variant=corporate',
+        width: 1200,
+        height: 630,
+        alt: 'Star Kitchen Hospitality Group',
       },
     ],
   },
@@ -46,7 +46,7 @@ const corporateMetadata: Metadata = {
     card: 'summary_large_image',
     title: '星厨集团 SK Group | Star Kitchen Hospitality Group',
     description: '环球美味，邻里共享。国际标准，数智未来。',
-    images: ['/brand/star-kitchen-logo.jpg'],
+    images: ['/api/og?variant=corporate'],
   },
   robots: {
     index: true,
@@ -97,9 +97,9 @@ const aiTechMetadata: Metadata = {
       '为连锁餐饮、团餐、酒店、物业与服务零售构建 AI Operating System，把经营洞察、智能体协作、审批工单与治理能力接进同一套平台。',
     images: [
       {
-        url: '/brand/star-kitchen-logo.jpg',
-        width: 1280,
-        height: 1707,
+        url: '/api/og?variant=ai-tech',
+        width: 1200,
+        height: 630,
         alt: 'StarKitchen AI',
       },
     ],
@@ -108,7 +108,7 @@ const aiTechMetadata: Metadata = {
     card: 'summary_large_image',
     title: 'StarKitchen AI | AI Operating System for Service Chains',
     description: 'Service-chain AI platform for operations, agents, workflows and governed execution.',
-    images: ['/brand/star-kitchen-logo.jpg'],
+    images: ['/api/og?variant=ai-tech'],
   },
   robots: {
     index: true,

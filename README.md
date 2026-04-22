@@ -44,9 +44,9 @@ For local review without DNS switching, use the preview route:
 
 Create `.env.local` from `.env.example`.
 
-Minimal public variable used by the current deployment:
+Optional server-side upstream used by the agents proxy:
 
-- `NEXT_PUBLIC_AGENTS_API_URL`
+- `AGENTS_API_URL`
 
 Optional server-side auth bootstrap should stay private and never use `NEXT_PUBLIC_` prefixes:
 

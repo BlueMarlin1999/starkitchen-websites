@@ -135,15 +135,15 @@ function HeroSection() {
             <div className="flex items-start justify-between gap-6">
               <div>
                 <p className={cn(corporateMono.className, 'text-[10px] uppercase tracking-[0.22em] text-[var(--sk-yellow)]')}>
-                  command center preview
+                  platform preview
                 </p>
                 <h2 className="mt-4 max-w-[14ch] text-[1.7rem] font-semibold leading-[1.08] tracking-[-0.022em] text-white">
                   从异常识别，到动作派发，使用同一套 AI 经营语言。
                 </h2>
               </div>
               <div className="rounded-[1.2rem] border border-white/12 bg-white/6 px-3 py-2 text-right">
-                <p className="text-[11px] text-white/56">preview state</p>
-                <p className="mt-1 text-sm font-semibold text-[var(--sk-green)]">illustrative</p>
+                <p className="text-[11px] text-white/56">示意状态</p>
+                <p className="mt-1 text-sm font-semibold text-[var(--sk-green)]">演示预览</p>
               </div>
             </div>
 
@@ -152,14 +152,14 @@ function HeroSection() {
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-sm font-semibold text-white">经营信号</p>
                   <span className="rounded-full bg-[rgba(26,151,218,0.14)] px-3 py-1 text-[11px] text-[var(--sk-blue)]">
-                    illustrative preview
+                    示意预览
                   </span>
                 </div>
                 <div className="mt-5 space-y-4">
                   {[
-                    ['人效偏离', '8 sites waiting for follow-up', 'var(--sk-red)'],
-                    ['采购波动', 'cost signal elevated in 3 regions', 'var(--sk-orange)'],
-                    ['内容执行', 'campaign assets pending approval', 'var(--sk-green)'],
+                    ['人效偏离', '8 个门店节点等待区域跟进', 'var(--sk-red)'],
+                    ['采购波动', '3 个区域出现成本波动预警', 'var(--sk-orange)'],
+                    ['内容执行', '一批营销素材仍在待审批队列', 'var(--sk-green)'],
                   ].map(([label, detail, color]) => (
                     <div key={label} className="rounded-[1.2rem] border border-white/[0.08] bg-white/[0.03] p-4">
                       <div className="flex items-center justify-between gap-3">
@@ -175,17 +175,17 @@ function HeroSection() {
               <div className="space-y-5">
                 <div className="rounded-[1.8rem] border border-white/10 bg-[linear-gradient(180deg,rgba(26,151,218,0.16),rgba(26,151,218,0.05))] p-5">
                   <div className="flex items-center justify-between gap-3">
-                    <p className="text-sm font-semibold text-white">Agent orchestration</p>
+                    <p className="text-sm font-semibold text-white">智能体编排</p>
                     <span className="rounded-full bg-white/[0.08] px-3 py-1 text-[11px] text-[var(--sk-yellow)]">
-                      routed by task
+                      按任务调度
                     </span>
                   </div>
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
                     {[
-                      ['Finance agent', 'Margin sensitivity analysis'],
-                      ['Ops agent', 'Store action list generation'],
-                      ['Legal agent', 'Contract clause review'],
-                      ['Growth agent', 'Campaign copy bundle'],
+                      ['财务智能体', '利润敏感度与结构波动分析'],
+                      ['营运智能体', '门店动作清单生成与派发'],
+                      ['法务智能体', '合同条款比对与风险审阅'],
+                      ['增长智能体', '营销文案与活动素材编排'],
                     ].map(([title, detail]) => (
                       <div key={title} className="rounded-[1.2rem] border border-white/10 bg-white/[0.04] p-4">
                         <p className="text-[13px] font-semibold text-white">{title}</p>
@@ -197,17 +197,17 @@ function HeroSection() {
 
                 <div className="rounded-[1.8rem] border border-white/10 bg-[rgba(255,255,255,0.04)] p-5">
                   <div className="flex items-center justify-between gap-3">
-                    <p className="text-sm font-semibold text-white">Workflow state</p>
+                    <p className="text-sm font-semibold text-white">工作流状态</p>
                     <span className="rounded-full bg-[rgba(56,181,51,0.14)] px-3 py-1 text-[11px] text-[var(--sk-green)]">
-                      human-in-the-loop
+                      人工在环
                     </span>
                   </div>
                   <div className="mt-4 space-y-3">
                     {[
-                      'Detect operational shift',
-                      'Generate recommendation + ticket',
-                      'Route approval to regional owner',
-                      'Write back to audit log',
+                      '识别经营波动与异常信号',
+                      '生成建议动作与审批工单',
+                      '派发到区域负责人完成确认',
+                      '回写审计日志与执行结果',
                     ].map((step, index) => (
                       <div key={step} className="flex items-center gap-3 rounded-[1.1rem] border border-white/[0.08] bg-white/[0.03] px-4 py-3">
                         <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/10 text-[11px] text-white/72">

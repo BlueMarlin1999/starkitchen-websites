@@ -1,8 +1,5 @@
 {
   "framework": "nextjs",
-  "env": {
-    "NEXT_PUBLIC_AGENTS_API_URL": "https://api.starkitchen.works/api/v1"
-  },
   "crons": [
     {
       "path": "/api/finance/live/sync",

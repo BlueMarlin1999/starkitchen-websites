@@ -18,13 +18,13 @@ describe('src/lib/agents-api.ts', () => {
       configurable: true,
       writable: true,
     })
-    process.env.NEXT_PUBLIC_AGENTS_API_URL = 'https://api.starkitchen.works/api/v1'
+    process.env.AGENTS_API_URL = 'https://api.starkitchen.works/api/v1'
   })
 
   afterEach(() => {
     vi.unstubAllGlobals()
     vi.clearAllMocks()
-    delete process.env.NEXT_PUBLIC_AGENTS_API_URL
+    delete process.env.AGENTS_API_URL
   })
 
   it('sends chat request with bearer token from auth store', async () => {

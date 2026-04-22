@@ -58,7 +58,7 @@ export default function IndustriesPage() {
           <SectionHeading
             eyebrow="Scenario Overview"
             title="五类核心场景，五套不同的运营重心"
-            description="这些页面不是简单列出行业类别，而是帮助潜在客户快速理解 Star Kitchen 为什么能处理更复杂的服务网络。"
+            description="我们不是按行业名录去区分场景，而是按真实运营结构去理解供给压力、履约节奏与服务标准。"
           />
 
           <div className="mt-12 grid gap-5 lg:grid-cols-2 xl:grid-cols-5">

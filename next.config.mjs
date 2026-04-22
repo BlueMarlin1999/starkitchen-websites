@@ -39,7 +39,13 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', 'date-fns', '@radix-ui/react-icons'],
   },
   images: {
-    unoptimized: true,
+    unoptimized: false,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com',
+      },
+    ],
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 604800,
   },

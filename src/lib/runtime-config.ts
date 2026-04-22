@@ -11,6 +11,8 @@ const stripTrailingSlash = (value: string) => value.replace(/\/+$/, '')
 const LEGACY_STARSHIP_AI_HOST = 'volunteers-gif-tsunami-publications.trycloudflare.com'
 const LEGACY_STARSHIP_AI_DOMAIN_SUFFIX = '.trycloudflare.com'
 const FALLBACK_STARSHIP_AI_PATH = '/dashboard/chat/'
+const DEFAULT_STARSHIP_AI_ORIGIN = (process.env.NEXT_PUBLIC_STARSHIP_AI_FALLBACK_ORIGIN || 'https://starkitchenai.com').trim()
+const getDefaultStarshipAiOrigin = () => stripTrailingSlash(DEFAULT_STARSHIP_AI_ORIGIN || 'https://starkitchenai.com')
 
 const parseBooleanFlag = (value?: string) => {
   if (!value) return null
@@ -85,7 +87,7 @@ export const getStarshipAiUrl = () => {
         if (typeof window !== 'undefined' && window.location?.origin) {
           return `${stripTrailingSlash(window.location.origin)}${FALLBACK_STARSHIP_AI_PATH}`
         }
-        return `https://www.starkitchen.works${FALLBACK_STARSHIP_AI_PATH}`
+        return `${getDefaultStarshipAiOrigin()}${FALLBACK_STARSHIP_AI_PATH}`
       }
     } catch (error) {
       console.warn('Invalid STARSHIP AI URL, fallback to in-site chat.', error)
@@ -98,5 +100,5 @@ export const getStarshipAiUrl = () => {
     return `${stripTrailingSlash(window.location.origin)}${FALLBACK_STARSHIP_AI_PATH}`
   }
 
-  return `https://www.starkitchen.works${FALLBACK_STARSHIP_AI_PATH}`
+  return `${getDefaultStarshipAiOrigin()}${FALLBACK_STARSHIP_AI_PATH}`
 }

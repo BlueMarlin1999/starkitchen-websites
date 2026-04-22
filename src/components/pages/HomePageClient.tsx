@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, BadgeCheck, Bot, ChevronRight, Play } from 'lucide-react'
 import { CorporateSiteShell } from '@/components/corporate/site-shell'
@@ -132,10 +133,11 @@ function MediaTile({
       )}
     >
       <div className={cn('relative', aspectClassName)}>
-        <img
+        <Image
           src={asset.src}
           alt={asset.alt}
-          loading="lazy"
+          fill
+          sizes="(min-width: 1280px) 22rem, (min-width: 1024px) 30vw, 100vw"
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,14,13,0.06),rgba(11,14,13,0.18)_48%,rgba(11,14,13,0.72)_100%)]" />
@@ -397,8 +399,8 @@ function BrandCinemaSection() {
               全球风味的眼界，<span className="block text-[var(--sk-yellow)]">本地服务的温度。</span>
             </h2>
             <p className="sk-copy mt-6 max-w-[31rem] text-[15px] leading-7 text-[rgba(255,246,234,0.8)]">
-              网站首先要像一家真正懂 hospitality 的餐饮服务集团:
-              有食物的吸引力、服务的体面感，以及国际集团应有的组织秩序。
+              Star Kitchen 希望把全球风味、本地温度与集团级运营纪律放进同一套品牌体验里，
+              让食物吸引力、服务体面感与组织秩序同时成立。
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -475,7 +477,7 @@ function BrandManifestoSection() {
               {COMPANY_NAME_ZH_LEGAL}
             </h3>
             <p className="mt-4 max-w-[33rem] text-[15px] leading-7 tracking-[0.01em] text-[rgba(23,28,25,0.68)]">
-              对外简称星厨集团 {COMPANY_SHORT_NAME_EN}。我们希望网站给人的第一感受，是一家兼具国际标准、本土温度与时尚服务气质的现代餐饮服务集团。
+              对外简称星厨集团 {COMPANY_SHORT_NAME_EN}。我们希望合作方首先感受到的，是一家兼具国际标准、本土温度与时尚服务气质的现代餐饮服务集团。
             </p>
           </div>
 
@@ -510,7 +512,7 @@ function ServiceSignatureSection() {
           <SectionHeading
             eyebrow="Service Signature"
             title="现代感与餐饮感，需要同时成立"
-            description="官网应该先让人看到食物、服务和组织秩序，再理解系统能力。"
+            description="我们先用食物、服务与组织秩序建立信任，再把系统能力自然交给合作方理解。"
           />
 
           <p className="mt-8 text-[14px] leading-7 tracking-[0.01em] text-[rgba(23,28,25,0.72)]">
@@ -521,7 +523,7 @@ function ServiceSignatureSection() {
             {[
               '让人先看到食物与服务，再理解系统与效率。',
               '用厨房、餐台与接待场景建立行业辨识度。',
-              '让集团气质与真实餐饮感出现在同一套页面语言里。',
+              '让集团气质与真实餐饮感在同一套品牌表达里同时成立。',
             ].map((item) => (
               <div key={item} className="flex gap-3 rounded-[1.45rem] border border-[rgba(23,28,25,0.08)] bg-white/60 p-4 text-[13px] tracking-[0.01em] text-[rgba(23,28,25,0.72)]">
                 <BadgeCheck className="mt-1 h-4 w-4 flex-none text-[var(--sk-action)]" />
@@ -635,7 +637,7 @@ function CompanySection() {
           <SectionHeading
             eyebrow="Company Positioning"
             title="这是 Star Kitchen 的经营世界观"
-            description="我们希望客户一进入首页，就理解这是一家懂场景、懂组织、也懂长期运营的服务集团。"
+            description="我们希望客户很快理解，这是一家懂场景、懂组织、也懂长期运营的服务集团。"
           />
 
           <div className="sk-corp-panel-soft rounded-[2.1rem] p-7">
@@ -643,7 +645,7 @@ function CompanySection() {
               why this matters
             </p>
             <p className="mt-4 text-[15px] leading-7 text-[rgba(23,28,25,0.74)]">
-              真正有价值的餐饮集团官网，不是“看起来像官网”，而是让潜在客户很快明白你们懂复杂服务，也懂组织运营。
+              真正有价值的餐饮服务集团，不只靠形象建立印象，更靠清晰表达复杂服务与组织运营能力来赢得信任。
             </p>
             <Link
               href="/about"
@@ -804,10 +806,11 @@ function CapabilitiesSection() {
                 className="group relative overflow-hidden rounded-[1.6rem] border border-[rgba(216,195,164,0.14)]"
               >
                 <div className="relative aspect-[4/3]">
-                  <img
+                  <Image
                     src={item.asset.src}
                     alt={item.asset.alt}
-                    loading="lazy"
+                    fill
+                    sizes="(min-width: 1280px) 18rem, (min-width: 768px) 24vw, 100vw"
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,13,12,0.06),rgba(10,13,12,0.24)_48%,rgba(10,13,12,0.74)_100%)]" />
@@ -953,8 +956,8 @@ function FutureSection() {
         <div className="sk-corp-panel rounded-[2.3rem] p-8 sm:p-10">
           <SectionHeading
             eyebrow="Brand Direction"
-            title="官网应该像集团，不像概念页"
-            description="可信赖、国际化、温暖、克制、有系统能力，这些词应该同时出现在 Star Kitchen 的视觉里。"
+            title="像国际服务集团，也像值得长期信任的合作伙伴"
+            description="可信赖、国际化、温暖、克制、有系统能力，这些品质应该同时出现在 Star Kitchen 的品牌表达里。"
           />
 
           <div className="mt-8 space-y-4">

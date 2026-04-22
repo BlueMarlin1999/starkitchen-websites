@@ -91,11 +91,11 @@ export default function AboutPage() {
       <div className="mx-auto max-w-[88rem] space-y-20 px-6 py-16 sm:space-y-24 sm:py-20">
         <section className="grid gap-6 xl:grid-cols-[1.04fr_0.96fr]">
           <div className="sk-corp-panel-soft rounded-[2.4rem] p-8 sm:p-10">
-            <SectionHeading
-              eyebrow="Mission, Vision, Values"
-              title="使命、愿景与价值观，不只是介绍页上的词，而是星厨集团的经营取向"
-              description="我们希望每个页面都让人感受到安全、创新、卓越、敏捷、真诚、共赢这些价值观，而不只是把它们列在墙上。"
-            />
+          <SectionHeading
+            eyebrow="Mission, Vision, Values"
+            title="使命、愿景与价值观，是星厨集团长期经营取向的共同底色"
+            description="安全、创新、卓越、敏捷、真诚、共赢，不是装饰性的口号，而是我们组织判断、服务方式与合作关系的共同标准。"
+          />
 
             <div className="mt-10 grid gap-4">
               {brandFoundations.map((item) => (
