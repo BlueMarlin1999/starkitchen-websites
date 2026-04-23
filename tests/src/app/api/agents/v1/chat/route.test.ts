@@ -61,7 +61,7 @@ const basePayload = {
 }
 
 const makeRequest = () =>
-  new Request('https://starkitchen.works/api/agents/v1/chat', {
+  new Request('https://example.com/api/agents/v1/chat', {
     method: 'POST',
     headers: {
       authorization: 'Bearer embedded-token',

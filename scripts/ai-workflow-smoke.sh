@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=/dev/null
 source "${SCRIPT_DIR}/smoke-auth.sh"
 
-BASE_URL="${BASE_URL:-https://www.starkitchen.works}"
+BASE_URL="${BASE_URL:-https://starkitchen.ai}"
 MANAGER_TOKEN="${LLM_MANAGER_TOKEN:-}"
 COOKIE_JAR="${AI_WORKFLOW_COOKIE_JAR:-/tmp/starkitchen-ai-workflow-smoke.cookies.txt}"
 AI_SMOKE_MEDIA="${AI_SMOKE_MEDIA:-0}"

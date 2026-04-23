@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=/dev/null
 source "${SCRIPT_DIR}/smoke-auth.sh"
 
-BASE_URL="${BASE_URL:-https://www.starkitchen.works}"
+BASE_URL="${BASE_URL:-https://starkitchen.ai}"
 MANAGER_TOKEN="${OA_MANAGER_TOKEN:-${LLM_MANAGER_TOKEN:-}}"
 TMP_DIR="${OA_SMOKE_TMP_DIR:-/tmp/starkitchen-oa-smoke}"
 SMOKE_AUTO_LOGIN="${SMOKE_AUTO_LOGIN:-1}"
@@ -204,7 +204,7 @@ fi
 echo "org_id=${org_id}"
 
 contact_employee_id="smoke$(date '+%H%M%S')"
-contact_create_payload=$(printf '{"employeeId":"%s","name":"OA Smoke Contact","title":"Test","orgUnitId":"%s","mobile":"13800009999","email":"smoke-contact@starkitchen.works","status":"active"}' "${contact_employee_id}" "${org_id}")
+contact_create_payload=$(printf '{"employeeId":"%s","name":"OA Smoke Contact","title":"Test","orgUnitId":"%s","mobile":"13800009999","email":"smoke-contact@starkitchen.ai","status":"active"}' "${contact_employee_id}" "${org_id}")
 contact_create_code=$(request_status \
   "${BASE_URL}/api/oa/contacts/" \
   -X POST \

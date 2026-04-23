@@ -1,18 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { isDemoFeatureEnabled } from '@/lib/live-mode'
+import { getAgentsApiBaseUrl } from '@/lib/server/agents-endpoint'
 import { parseJsonWithSchema } from '@/lib/server/input-validation'
 
 export const runtime = 'nodejs'
-
-const DEFAULT_AGENTS_API_URL = 'https://api.starkitchen.works/api/v1'
-const normalizeBaseUrl = (value: string) => value.trim().replace(/\/+$/, '')
-const resolveApiBase = () =>
-  normalizeBaseUrl(
-    process.env.AGENTS_API_URL ||
-      process.env.NEXT_PUBLIC_AGENTS_API_URL ||
-      DEFAULT_AGENTS_API_URL
-  )
 
 const demoChatSchema = z.object({
   message: z.string().trim().min(1).max(8000),
@@ -34,7 +26,7 @@ export async function POST(request: NextRequest) {
   if (!parsedPayload.ok) return parsedPayload.response
 
   try {
-    const upstream = await fetch(`${resolveApiBase()}/demo/chat`, {
+    const upstream = await fetch(`${getAgentsApiBaseUrl()}/demo/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(parsedPayload.data),

@@ -3,18 +3,10 @@ import { z } from 'zod'
 import { normalizeRole } from '@/lib/access'
 import { verifyEmbeddedSessionToken } from '@/lib/server/auth-session'
 import { appendFileHistory } from '@/lib/server/agents-history-store'
+import { getAgentsApiBaseUrl } from '@/lib/server/agents-endpoint'
 import { requireAuthenticated } from '@/lib/server/llm-auth'
 
 export const runtime = 'nodejs'
-
-const DEFAULT_AGENTS_API_URL = 'https://api.starkitchen.works/api/v1'
-const normalizeBaseUrl = (value: string) => value.trim().replace(/\/+$/, '')
-const resolveApiBase = () =>
-  normalizeBaseUrl(
-    process.env.AGENTS_API_URL ||
-      process.env.NEXT_PUBLIC_AGENTS_API_URL ||
-      DEFAULT_AGENTS_API_URL
-  )
 
 const readBearerToken = (request: NextRequest) => {
   const auth = request.headers.get('authorization') || ''
@@ -88,7 +80,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const upstream = await fetch(`${resolveApiBase()}/chat/vision`, {
+    const upstream = await fetch(`${getAgentsApiBaseUrl()}/chat/vision`, {
       method: 'POST',
       headers: { Authorization: `Bearer ${readBearerToken(request)}` },
       body: upstreamBody,

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BASE_URL="${BASE_URL:-https://www.starkitchen.works}"
+BASE_URL="${BASE_URL:-https://starkitchen.ai}"
 SMOKE_AUTO_LOGIN="${SMOKE_AUTO_LOGIN:-1}"
 
 echo "== SK quality preflight =="

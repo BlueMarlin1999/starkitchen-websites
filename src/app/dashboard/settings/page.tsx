@@ -35,7 +35,7 @@ export default function SettingsPage() {
                 
                 <div className="grid gap-2">
                   <Label htmlFor="email">系统邮箱</Label>
-                  <Input id="email" type="email" defaultValue="admin@starkitchen.group" className="border-white/10 bg-white/5 text-white placeholder:text-slate-500 focus:border-primary focus:ring-primary" />
+                  <Input id="email" type="email" defaultValue="" className="border-white/10 bg-white/5 text-white placeholder:text-slate-500 focus:border-primary focus:ring-primary" />
                 </div>
               </div>
             </div>

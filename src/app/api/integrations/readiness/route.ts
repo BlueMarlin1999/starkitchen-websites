@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { isStrictLiveMode } from '@/lib/live-mode'
 import { getFinanceLiveHealthSnapshot } from '@/lib/server/finance-live/health'
 import { listHrGaiaRoster } from '@/lib/server/hr-gaia-roster-store'
+import { getAgentsApiBaseUrl } from '@/lib/server/agents-endpoint'
 import { requireAuthenticated } from '@/lib/server/llm-auth'
 import { isPersistentJsonStoreEnabled, readPersistentJsonState } from '@/lib/server/persistent-json-store'
 import { readSupplyLiveDataset } from '@/lib/server/supply-live-store'
@@ -163,11 +164,12 @@ const resolveOaReadiness = async (): Promise<ReadinessItem> => {
 }
 
 const resolveAgentsReadiness = (): ReadinessItem => {
-  const apiUrl = clip(
-    process.env.AGENTS_API_URL || process.env.NEXT_PUBLIC_AGENTS_API_URL,
-    '',
-    600
-  )
+  let apiUrl = ''
+  try {
+    apiUrl = clip(getAgentsApiBaseUrl(), '', 600)
+  } catch {
+    apiUrl = ''
+  }
   const state: ReadinessState = apiUrl ? 'ready' : 'missing'
   return {
     key: 'agents',
