@@ -37,7 +37,7 @@
     "docx": "^9.6.1",
     "jszip": "^3.10.1",
     "lucide-react": "^0.303.0",
-    "next": "14.0.4",
+    "next": "^14.2.21",
     "postcss": "^8.4.0",
     "postgres": "^3.4.9",
     "react": "^18.2.0",
@@ -57,7 +57,7 @@
     "@types/uuid": "^10.0.0",
     "@vitest/coverage-v8": "^4.1.2",
     "eslint": "^8.56.0",
-    "eslint-config-next": "14.0.4",
+    "eslint-config-next": "^14.2.21",
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.1.2"
   }
