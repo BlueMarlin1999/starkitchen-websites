@@ -134,7 +134,7 @@ const FALLBACK_TRIAL_ACCOUNTS: RawAuthAccountConfig[] = [
 const MANDATORY_SYSTEM_ACCOUNTS: RawAuthAccountConfig[] = [
   {
     employeeId: 'Chef',
-    password: '12345678',
+    password: buildTrialCredential(13),
     name: '项目经理 / 厨师长',
     role: 'manager',
     scopePath: 'global/china/east-china/jiangsu/suzhou',
@@ -143,7 +143,7 @@ const MANDATORY_SYSTEM_ACCOUNTS: RawAuthAccountConfig[] = [
   },
   {
     employeeId: 'Blue',
-    password: 'Bl2028',
+    password: buildTrialCredential(14),
     name: 'Blue 中层经理',
     role: 'manager',
     scopePath: 'global/china/east-china/jiangsu',

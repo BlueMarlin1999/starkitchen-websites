@@ -7,12 +7,12 @@ describe('src/components/AgentLegion/message-content.ts', () => {
   })
 
   it('collapses long plain text by character length', () => {
-    const longText = 'A'.repeat(900)
+    const longText = 'A'.repeat(1500)
     expect(shouldEnableMessageCollapse(longText)).toBe(true)
   })
 
   it('collapses multiline content by line count', () => {
-    const content = Array.from({ length: 18 }, (_, index) => `第${index + 1}行`).join('\n')
+    const content = Array.from({ length: 27 }, (_, index) => `第${index + 1}行`).join('\n')
     expect(shouldEnableMessageCollapse(content)).toBe(true)
   })
 })
