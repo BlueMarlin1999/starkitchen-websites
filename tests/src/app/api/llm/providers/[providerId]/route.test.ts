@@ -62,7 +62,7 @@ const providerConfig = {
 }
 
 const makeRequest = () =>
-  new Request('https://starkitchen.works/api/llm/providers/openai', {
+  new Request('https://example.com/api/llm/providers/openai', {
     method: 'PUT',
     headers: {
       authorization: 'Bearer embedded-token',

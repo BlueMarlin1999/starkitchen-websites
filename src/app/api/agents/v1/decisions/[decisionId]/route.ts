@@ -1,19 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { updateDecisionHistoryStatus } from '@/lib/server/agents-history-store'
+import { getAgentsApiBaseUrl } from '@/lib/server/agents-endpoint'
 import { requireAuthenticated } from '@/lib/server/llm-auth'
 import { parseJsonWithSchema } from '@/lib/server/input-validation'
 
 export const runtime = 'nodejs'
-
-const DEFAULT_AGENTS_API_URL = 'https://api.starkitchen.works/api/v1'
-const normalizeBaseUrl = (value: string) => value.trim().replace(/\/+$/, '')
-const resolveApiBase = () =>
-  normalizeBaseUrl(
-    process.env.AGENTS_API_URL ||
-      process.env.NEXT_PUBLIC_AGENTS_API_URL ||
-      DEFAULT_AGENTS_API_URL
-  )
 
 const readBearerToken = (request: NextRequest) => {
   const auth = request.headers.get('authorization') || ''
@@ -49,9 +41,9 @@ export async function PATCH(
   if (!parsedBody.ok) return parsedBody.response
 
   const token = readBearerToken(request)
-  const upstreamUrl = `${resolveApiBase()}/decisions/${parsedParams.data.decisionId}`
 
   try {
+    const upstreamUrl = `${getAgentsApiBaseUrl()}/decisions/${parsedParams.data.decisionId}`
     const upstream = await fetch(upstreamUrl, {
       method: 'PATCH',
       headers: {

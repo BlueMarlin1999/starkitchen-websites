@@ -1,18 +1,12 @@
 import { NextResponse } from 'next/server'
 import { isStrictLiveMode } from '@/lib/live-mode'
 import { buildAgentLocalMetrics } from '@/lib/server/agents-history-store'
+import { getAgentsApiBaseUrl } from '@/lib/server/agents-endpoint'
 
 export const runtime = 'nodejs'
 
-const DEFAULT_AGENTS_API_URL = 'https://api.starkitchen.works/api/v1'
-const normalizeBaseUrl = (value: string) => value.trim().replace(/\/+$/, '')
-
 const resolveMetricsUrl = () => {
-  const configured = normalizeBaseUrl(
-    process.env.AGENTS_API_URL ||
-      process.env.NEXT_PUBLIC_AGENTS_API_URL ||
-      DEFAULT_AGENTS_API_URL
-  )
+  const configured = getAgentsApiBaseUrl()
 
   if (configured.includes('/api/agents/v1')) {
     return `${configured.replace('/api/agents/v1', '')}/api/agents/metrics/`
@@ -27,9 +21,26 @@ const resolveMetricsUrl = () => {
 
 export async function GET() {
   const strictLiveMode = isStrictLiveMode()
-  const targetUrl = resolveMetricsUrl()
+  let targetUrl = ''
 
   try {
+    targetUrl = resolveMetricsUrl()
+  } catch (error) {
+    if (strictLiveMode) {
+      return NextResponse.json(
+        {
+          message: error instanceof Error ? error.message : 'Agents API 地址未配置',
+          code: 'METRICS_UPSTREAM_UNAVAILABLE',
+        },
+        { status: 502 }
+      )
+    }
+  }
+
+  try {
+    if (!targetUrl) {
+      throw new Error('Agents metrics upstream is not configured')
+    }
     const upstream = await fetch(targetUrl, {
       method: 'GET',
       cache: 'no-store',

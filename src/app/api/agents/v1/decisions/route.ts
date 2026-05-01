@@ -1,19 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 import { listDecisionHistory } from '@/lib/server/agents-history-store'
+import { getAgentsApiBaseUrl } from '@/lib/server/agents-endpoint'
 import { requireAuthenticated } from '@/lib/server/llm-auth'
 
 export const runtime = 'nodejs'
-
-const DEFAULT_AGENTS_API_URL = 'https://api.starkitchen.works/api/v1'
-const normalizeBaseUrl = (value: string) => value.trim().replace(/\/+$/, '')
-
-const resolveApiBase = () =>
-  normalizeBaseUrl(
-    process.env.AGENTS_API_URL ||
-      process.env.NEXT_PUBLIC_AGENTS_API_URL ||
-      DEFAULT_AGENTS_API_URL
-  )
 
 const readBearerToken = (request: NextRequest) => {
   const auth = request.headers.get('authorization') || ''
@@ -36,7 +27,7 @@ const buildUpstreamUrl = (query: z.infer<typeof decisionQuerySchema>) => {
   if (query.limit) params.set('limit', String(query.limit))
 
   const suffix = params.size ? `?${params.toString()}` : ''
-  return `${resolveApiBase()}/decisions${suffix}`
+  return `${getAgentsApiBaseUrl()}/decisions${suffix}`
 }
 
 export async function GET(request: NextRequest) {
@@ -58,9 +49,9 @@ export async function GET(request: NextRequest) {
   }
 
   const token = readBearerToken(request)
-  const upstreamUrl = buildUpstreamUrl(parsed.data)
 
   try {
+    const upstreamUrl = buildUpstreamUrl(parsed.data)
     const upstream = await fetch(upstreamUrl, {
       method: 'GET',
       headers: {
