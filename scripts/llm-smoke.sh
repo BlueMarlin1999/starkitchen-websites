@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # shellcheck source=/dev/null
 source "${SCRIPT_DIR}/smoke-auth.sh"
 
-BASE_URL="${BASE_URL:-https://starkitchen.ai}"
+BASE_URL="${BASE_URL:-https://www.starkitchen.works}"
 MANAGER_TOKEN="${LLM_MANAGER_TOKEN:-}"
 MESSAGE="${LLM_TEST_MESSAGE:-请回复 OK}"
 PROVIDER_ID="${LLM_PROVIDER_ID:-deepseek}"
